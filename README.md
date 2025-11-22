@@ -6,6 +6,7 @@ The game keeps track of your moves and the time it takes you complete a randomly
 
 Use WASD to move the tiles around.
 
-https://github.com/TheKettleBlack/Slide/blob/main/slide.png
+
+![Screenshot of Slide in action.](https://github.com/TheKettleBlack/Slide/blob/main/slide.png)
 
 11/22/25: Initial release.
