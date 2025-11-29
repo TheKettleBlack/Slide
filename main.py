@@ -134,6 +134,24 @@ def updateGrid(pressedKey):
         global wonGame
         wonGame = True
 
+def handleTileClick(r, c):
+    global tileGrid, pMoves
+    zero_r = -1
+    zero_c = -1
+    for row_index, row in enumerate(tileGrid):
+        if 0 in row:
+            zero_r = row_index
+            zero_c = row.index(0)
+            break
+    if (r == zero_r and abs(c - zero_c) == 1) or (c == zero_c and abs(r - zero_r) == 1):
+        tileGrid[zero_r][zero_c], tileGrid[r][c] = tileGrid[r][c], tileGrid[zero_r][zero_c]
+        pMoves += 1
+        tileGroup.empty()
+        configureGrid(tileGrid)
+        if tileGrid == [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]:
+            global wonGame
+            wonGame = True
+
 def drawText(text,font,text_col,x,y):
     img = font.render(text,True,text_col)
     screen.blit(img,(x,y))
@@ -150,6 +168,14 @@ while True:
             elif event.type == pygame.KEYDOWN:
                 if event.key in (pygame.K_w,pygame.K_a,pygame.K_s,pygame.K_d):
                     updateGrid(event.key)
+
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                mx, my = pygame.mouse.get_pos()
+                if my < 400:
+                    clicked_col = mx // TILESIZE
+                    clicked_row = my // TILESIZE
+                    handleTileClick(clicked_row, clicked_col)
+
         tileGroup.draw(screen)
         pTime += 1/FPS
         pTimeConverted = datetime.timedelta(seconds=int(pTime))
