@@ -6,8 +6,10 @@
 
 The game keeps track of your moves and the time it takes you complete a randomly generated winnable puzzle.
 
-Use WASD to move the tiles around.
+Use WASD or click to move the tiles around.
 
 ![Screenshot of Slide in action.](https://github.com/TheKettleBlack/Slide/blob/main/slide.png)
+
+11/28/25: Click support.
 
 11/22/25: Initial release.
